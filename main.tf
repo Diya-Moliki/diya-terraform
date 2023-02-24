@@ -1,24 +1,18 @@
-data "aws_ami" "ubuntu" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.0"
+    }
   }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "web" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = "t3.micro"
+# Configure the AWS Provider
+provider "aws" {
+  region = "us-east-1"
+}
 
-  tags = {
-    Name = "HelloWorld"
-  }
+# Create a VPC
+resource "aws_vpc" "mandee" {
+  cidr_block = "10.0.0.0/16"
 }
