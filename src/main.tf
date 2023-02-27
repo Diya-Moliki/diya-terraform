@@ -8,7 +8,5 @@ module "tf-state" {
   source      = "./modules/tf-state-resource"
 }
 
-module "vpc-infra" {
-  source = "./modules/vpc"
-}
+
 
