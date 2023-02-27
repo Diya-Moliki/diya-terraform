@@ -4,8 +4,12 @@ provider "aws" {
   region  = "us-east-1"
 }
 
-module "tf-state" {
+module "vpc" {
   source = "./modules/tf-state-resource/vpc"
+}
+
+module "tf-state" {
+  source = "./modules/tf-state-resource"
 }
 
 
