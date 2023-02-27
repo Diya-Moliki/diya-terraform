@@ -8,7 +8,7 @@ module "tf-state" {
   source = "./modules/tf-state-resource"
 }
   backend "s3" {
-    bucket         = "cc-tf-state-backend-ci-cd"
+    bucket         = "mybucket-diya"
     key            = "tf-infra/terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "terraform-state-locking"
